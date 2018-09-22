@@ -1,94 +1,132 @@
 execute pathogen#infect()
 
-set runtimepath^=~/vimfiles/bundle/ctrlp.vim
+syntax on
+filetype plugin indent on
 
-set laststatus=2
-
-if !has('gui_running')
-  set t_Co=256
+" set GUI stuff
+if has ('gui_running')
+    set guifont=Hack:h9:cANSI
+    autocmd GUIEnter * set vb t_vb=
 endif
 
-" because of lightline
-set noshowmode
+" Neovim: Terminal manipulation
+tnoremap <Esc> <C-\><C-n>
 
-" Neovim: Terminal emulator map
-tnoremap <Esc> <C-\><C-n> 
-
-"" appearance
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ }
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
-set nu
-set autoindent
 colorscheme gruvbox
 set background=dark
-syntax on
-set guifont=Consolas:h12
-set guioptions-=T   " remove toolbar
-set guioptions-=r   " remove scrollbar
-set guioptions-=L   " remove left scrollbar
+
+set ic
+set number
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+set autoindent
+set nobackup
+set noswapfile
+set nuw=6
+set cursorline
+set hidden
+set smarttab
+set incsearch
+set copyindent
+set hlsearch
+set history=1000
+set undolevels=1000
+set noerrorbells
+
+set guioptions-=m "remove menu bar
+set guioptions-=T "remove toolbar
+set guioptions-=r
+set guioptions-=L
+
 set colorcolumn=80
 
 set updatetime=100
 
-" Disable error bells
-set noeb vb t_vb=
+" Set button mapping and other functionality
+nnoremap <C-pgup> :tabprevious<cr>
+nnoremap <C-pgdn> :tabnext<cr>
+nnoremap <C-t> :tabnew<cr>
+inoremap <C-pgup> <ESC>:tabprevious<cr>i
+inoremap <C-pgdn> <ESC>:tabnext<cr>i
+inoremap <C-t> <ESC>:tabnew<cr>i
 
-" search
-set hlsearch
-set incsearch
-
-" tab / whitespace
-filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
-set expandtab
-
-" hotkeys
 nnoremap ; :
+nnoremap : <nop>
 
-"CtrlP: re-map
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP .'
+inoremap jk <esc> 
+inoremap <esc> <nop>
 
-" mouse
-set mouse=a
+inoremap <leader>chk - [ ] 
 
-" Fix weird backspace issue
-set backspace=2
+" Change between windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
-" Tab stuff
-nnoremap <C-t> :tabnew<CR>
-nnoremap <C-tab> :tabnext<CR>
-nnoremap <C-S-tab> :tabprevious<CR>
+" Change styles
+nnoremap <Leader>markdown :set syntax=markdown<cr>
+nnoremap <Leader>java :set syntax=java<cr>
+nnoremap <Leader>python :set syntax=python<cr>
+nnoremap <Leader>bash :set syntax=bash<cr>
+nnoremap <Leader>rust :set syntax=rust<cr>
 
-" EasyMotion: Easy cardinal movement
+" CtrlP: hotkey
+nnoremap <C-p> :CtrlP .<cr>
+
+" EasyMotion: cardinal movement
 map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
+
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
-" GitGutter: find git?
-let g:gitgutter_git_executable = '"C:\Program Files\Git\bin\git.exe"'
-let g:gitgutter_enabled = 1
+" Airline: config
+set laststatus=2
+let g:airline_left_sep      = ''
+let g:airline_left_alt_sep  = ''
+let g:airline_right_sep     = ''
+let g:airline_right_alt_sep = ''
 
-" Functions
-function! DoFormatXML()
-    % !C:/Users/mdowe/vimfiles/xmllint.exe "%" --format
-endfunction
-command! FormatXML call DoFormatXML()
+" Syntastic: config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-function! Prosetime()
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Signify config
+let g:signify_vcs_list = ['git', 'svn']
+
+let g:signify_cursorhold_insert     = 1
+let g:signify_cursorhold_normal     = 1
+let g:signify_update_on_bufenter    = 0
+let g:signify_update_on_focusgained = 1
+
+" Language things
+autocmd FileType java       :iabbrev <buffer> iff if () {<left><left><left>
+autocmd FileType python     :iabbrev <buffer> iff if :<left>
+autocmd FileType javascript :iabbrev <buffer> iff if () {<left><left><left>
+
+
+function! ProseTimeOn()
     Goyo
-    colorscheme desert
-endfunction
-command! Prose call Prosetime()
-
-function! NoteTime()
-    Goyo 80x200
+    set background=light
     Limelight
+    PencilSoft
+    set filetype=markdown
 endfunction
-command! Notes call NoteTime()
+function! ProseTimeOff()
+    Goyo!
+    set background=dark
+    Limelight!
+    PencilOff
+endfunction
+command! ProseOn call ProseTimeOn()
+command! ProseOff call ProseTimeOff()
