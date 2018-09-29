@@ -73,6 +73,15 @@ nnoremap <Leader>python :set syntax=python<cr>
 nnoremap <Leader>bash :set syntax=bash<cr>
 nnoremap <Leader>rust :set syntax=rust<cr>
 
+" Language things (experiments from "Learning VimScript the Hard Way")
+"autocmd FileType java       :iabbrev <buffer> iff if () {<left><left><left>
+"autocmd FileType python     :iabbrev <buffer> iff if :<left>
+"autocmd filetype javascript :iabbrev <buffer> iff if () {<left><left><left>
+
+
+"-----------------
+" BEGIN: Plugin configs
+"-----------------
 " CtrlP: hotkey
 nnoremap <C-p> :CtrlP .<cr>
 
@@ -84,6 +93,9 @@ map <Leader>h <Plug>(easymotion-linebackward)
 
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
+" GitGutter: config
+au VimEnter * :GitGutterDisable " Disable GitGutter
+
 " Airline: config
 set laststatus=2
 let g:airline_left_sep      = ''
@@ -92,27 +104,19 @@ let g:airline_right_sep     = ''
 let g:airline_right_alt_sep = ''
 
 " Syntastic: config
+
+au VimEnter * :SyntasticToggleMode " Disable Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+"-----------------
+" END: Plugin configs
+"-----------------
 
-" Signify config
-let g:signify_vcs_list = ['git', 'svn']
-
-let g:signify_cursorhold_insert     = 1
-let g:signify_cursorhold_normal     = 1
-let g:signify_update_on_bufenter    = 0
-let g:signify_update_on_focusgained = 1
-
-" Language things (experiments from "Learning VimScript the Hard Way")
-"autocmd FileType java       :iabbrev <buffer> iff if () {<left><left><left>
-"autocmd FileType python     :iabbrev <buffer> iff if :<left>
-"autocmd filetype javascript :iabbrev <buffer> iff if () {<left><left><left>
 
 
 " Prose, notetaking mode
