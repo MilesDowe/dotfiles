@@ -1,19 +1,19 @@
 execute pathogen#infect()
 
-syntax on
-filetype plugin indent on
-
 " set GUI stuff
 if has ('gui_running')
     set guifont=Hack:h9:cANSI
     autocmd GUIEnter * set vb t_vb=
 endif
 
-" Neovim: Terminal manipulation
-tnoremap <Esc> <C-\><C-n>
+syntax on
+filetype plugin indent on
 
 colorscheme gruvbox
 set background=dark
+
+" Neovim terminal shortcuts
+tnoremap <esc> <C-\><C-n>
 
 set ic
 set number
@@ -55,7 +55,7 @@ inoremap <C-t> <ESC>:tabnew<cr>i
 nnoremap ; :
 nnoremap : <nop>
 
-inoremap jk <esc> 
+inoremap jk <esc>
 inoremap <esc> <nop>
 
 inoremap <leader>chk - [ ] 
@@ -109,12 +109,13 @@ let g:signify_cursorhold_normal     = 1
 let g:signify_update_on_bufenter    = 0
 let g:signify_update_on_focusgained = 1
 
-" Language things
-autocmd FileType java       :iabbrev <buffer> iff if () {<left><left><left>
-autocmd FileType python     :iabbrev <buffer> iff if :<left>
-autocmd FileType javascript :iabbrev <buffer> iff if () {<left><left><left>
+" Language things (experiments from "Learning VimScript the Hard Way")
+"autocmd FileType java       :iabbrev <buffer> iff if () {<left><left><left>
+"autocmd FileType python     :iabbrev <buffer> iff if :<left>
+"autocmd filetype javascript :iabbrev <buffer> iff if () {<left><left><left>
 
 
+" Prose, notetaking mode
 function! ProseTimeOn()
     Goyo
     set background=light
@@ -122,11 +123,18 @@ function! ProseTimeOn()
     PencilSoft
     set filetype=markdown
 endfunction
+command! ProseOn call ProseTimeOn()
+
 function! ProseTimeOff()
     Goyo!
     set background=dark
     Limelight!
     PencilOff
 endfunction
-command! ProseOn call ProseTimeOn()
 command! ProseOff call ProseTimeOff()
+
+" Create a list of numbers within the given range
+function! NumList(start, stop)
+    put =range(a:start, a:stop)
+endfunction
+"command! -nargs=1 numlist call s:MakeNumberList(<f-args>)
