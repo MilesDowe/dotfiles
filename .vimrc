@@ -66,6 +66,12 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Copy pasting
+vnoremap <C-c> *"y
+vnoremap <C-x> "*x
+vnoremap <C-p> "*p
+vnoremap <C-P> "*P
+
 " Change styles
 nnoremap <Leader>markdown :set syntax=markdown<cr>
 nnoremap <Leader>java :set syntax=java<cr>
