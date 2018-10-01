@@ -69,8 +69,6 @@ nnoremap <C-l> <C-w>l
 " Copy pasting
 vnoremap <C-c> *"y
 vnoremap <C-x> "*x
-vnoremap <C-p> "*p
-vnoremap <C-P> "*P
 
 " Change styles
 nnoremap <Leader>markdown :set syntax=markdown<cr>
@@ -119,6 +117,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" Lightline: config
+let g:lightline = {
+\ 'colorscheme': 'wombat',
+\ }
 "-----------------
 " END: Plugin configs
 "-----------------
