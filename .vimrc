@@ -1,11 +1,5 @@
 execute pathogen#infect()
 
-" set GUI stuff
-if has ('gui_running')
-    set guifont=Hack:h9:cANSI
-    autocmd GUIEnter * set vb t_vb=
-endif
-
 syntax on
 filetype plugin indent on
 
@@ -146,8 +140,12 @@ function! ProseTimeOff()
 endfunction
 command! ProseOff call ProseTimeOff()
 
-" Create a list of numbers within the given range
+" Create a list of numbers within the given range, start and stop inclusive
 function! NumList(start, stop)
     put =range(a:start, a:stop)
 endfunction
 "command! -nargs=1 numlist call s:MakeNumberList(<f-args>)
+
+" Create a commands for cleaning up XML & JSON (assumes Py3 installed)
+command! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
+command! FormatJSON :%!python3 -m json.tool
