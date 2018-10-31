@@ -147,5 +147,15 @@ endfunction
 "command! -nargs=1 numlist call s:MakeNumberList(<f-args>)
 
 " Create a commands for cleaning up XML & JSON (assumes Py3 installed)
-command! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
-command! FormatJSON :%!python3 -m json.tool
+function! CleanUpXml()
+    set syntax=xml
+    %!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
+    g/^[\t ]*$/d
+endfunction
+command! FormatXML call CleanUpXml()
+
+function! CleanUpJson()
+    set syntax=json
+    %!python3 -m json.tool
+endfunction
+command! FormatJSON call CleanUpJson()
