@@ -102,7 +102,6 @@ let g:airline_right_sep     = ''
 let g:airline_right_alt_sep = ''
 
 " Syntastic: config
-
 au VimEnter * :SyntasticToggleMode " Disable Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -116,6 +115,10 @@ let g:syntastic_check_on_wq = 0
 let g:lightline = {
 \ 'colorscheme': 'wombat',
 \ }
+
+" ALE: config
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters = {'text': ['write-good']} " First, `npm install -g write-good`
 "-----------------
 " END: Plugin configs
 "-----------------
