@@ -52,6 +52,9 @@ nnoremap : <nop>
 inoremap jk <esc>
 inoremap <esc> <nop>
 
+" For quick searching of selected text
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
 inoremap <leader>chk - [ ] 
 
 " Change between windows
