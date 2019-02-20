@@ -8,6 +8,9 @@ set background=dark
 
 " Neovim terminal shortcuts
 tnoremap <esc> <C-\><C-n>
+" Neovim shift+insert fix
+"   Stolen from: https://jdhao.github.io/2018/11/15/neovim_configuration_windows/
+inoremap <silent> <S-Insert> <C-R>+
 
 set ic
 set number
