@@ -12,6 +12,10 @@ tnoremap <esc> <C-\><C-n>
 "   Stolen from: https://jdhao.github.io/2018/11/15/neovim_configuration_windows/
 inoremap <silent> <S-Insert> <C-R>+
 
+" Directory navigation
+" Open files in a new view (1 = horiz, 2 = vert, 3 = tab)
+let g:netrw_browse_split = 2
+
 set ic
 set number
 set tabstop=4
