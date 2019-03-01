@@ -13,8 +13,11 @@ tnoremap <esc> <C-\><C-n>
 inoremap <silent> <S-Insert> <C-R>+
 
 " Directory navigation
-" Open files in a new view (1 = horiz, 2 = vert, 3 = tab)
-let g:netrw_browse_split = 2
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 2   " Open files in a new view (1 = horiz, 2 = vert, 3 = tab)
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
 
 set ic
 set number
