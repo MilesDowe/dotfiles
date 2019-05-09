@@ -63,10 +63,11 @@ nnoremap : <nop>
 inoremap jk <esc>
 inoremap <esc> <nop>
 
-" General info
+" I use this motion to add the current date as header2. Primarily
+"   used for a "done.md" file when knocking off todo items.
 nnoremap <leader>tdd :put=strftime('## %a, %Y.%m.%d ##')<cr>
 
-" Change between windows
+" Change between windows (does not work with Vim built-in terminal)
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -129,7 +130,7 @@ let g:ale_linters = {
 \}
 
 " wiki.vim: config
-let g:wiki_root = '~/Documents/knowledge_base'
+let g:wiki_root = '~/Documents/knowledge_base' " Can change this location to whatever
 let g:wiki_filetypes = ['md']
 let g:wiki_link_target_type = 'md'
 let g:wiki_link_extension = 'md'
