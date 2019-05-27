@@ -63,7 +63,7 @@ nnoremap : <nop>
 inoremap jk <esc>
 inoremap <esc> <nop>
 
-" I use this motion to add the current date as header2. Primarily
+" I use this motion to add the current date as header-2. Primarily
 "   used for a "done.md" file when knocking off todo items.
 nnoremap <leader>tdd :put=strftime('## %a, %Y.%m.%d ##')<cr>
 
@@ -73,9 +73,13 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" For searching a visually-selected sequence
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
 " Copy pasting
-vnoremap <C-c> "*y
-vnoremap <C-x> "*x
+vnoremap <C-c> "*y  " Copy
+vnoremap <C-x> "*x  " Cut
+nnoremap <C-a> ggVG " Select all
 
 " Change styles
 nnoremap <Leader>markdown :set syntax=markdown<cr>
