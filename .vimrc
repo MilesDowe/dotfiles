@@ -77,9 +77,9 @@ nnoremap <C-l> <C-w>l
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " Copy pasting
-vnoremap <C-c> "*y  " Copy
-vnoremap <C-x> "*x  " Cut
-nnoremap <C-a> ggVG " Select all
+vnoremap <C-c> "*y
+vnoremap <C-x> "*x
+nnoremap <C-a> ggVG
 
 " Change styles
 nnoremap <Leader>markdown :set syntax=markdown<cr>
