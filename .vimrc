@@ -76,10 +76,11 @@ nnoremap <C-l> <C-w>l
 " For searching a visually-selected sequence
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
-" Copy pasting
+" Copy pasting, saving
 vnoremap <C-c> "*y
 vnoremap <C-x> "*x
 nnoremap <C-a> ggVG
+nnoremap <C-s> :w<cr>
 
 " Change styles
 nnoremap <Leader>markdown :set syntax=markdown<cr>
