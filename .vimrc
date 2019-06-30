@@ -76,19 +76,14 @@ nnoremap <C-l> <C-w>l
 " For searching a visually-selected sequence
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
-" Copy pasting, saving
+" Copy pasting
 vnoremap <C-c> "*y
 vnoremap <C-x> "*x
 nnoremap <C-a> ggVG
-nnoremap <C-s> :w<cr>
 
-" Change styles
-nnoremap <Leader>markdown :set syntax=markdown<cr>
-nnoremap <Leader>java :set syntax=java<cr>
-nnoremap <Leader>json :set syntax=json<cr>
-nnoremap <Leader>python :set syntax=python<cr>
-nnoremap <Leader>bash :set syntax=bash<cr>
-nnoremap <Leader>rust :set syntax=rust<cr>
+" Saving
+nnoremap <C-s> :w<cr>
+inoremap <C-s> <esc>:w<cr>
 
 "-----------------
 " BEGIN: Plugin configs
