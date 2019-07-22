@@ -32,7 +32,6 @@ set shiftwidth=4
 set expandtab
 set softtabstop=4
 set autoindent
-set nobackup
 set nuw=6
 set cursorline
 set hidden
