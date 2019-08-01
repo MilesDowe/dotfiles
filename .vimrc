@@ -67,7 +67,7 @@ if has("patch-8.1.0.251")
 end
     " persist the undo tree for each file
 set undofile
-set undodir^=~/.vim/undo//
+set undodir^=~/vimfiles/undo//
 
 set colorcolumn=100
 
