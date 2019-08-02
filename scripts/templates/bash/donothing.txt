@@ -1,0 +1,13 @@
+## BEGIN DO-NOTHING FUNCTIONS
+
+# Pause function for manual steps
+wait_for_enter () {
+    read -p "[Press enter to continue]"
+}
+
+# Colored headers
+print_header () {
+    /bin/echo -e "-> \e[1;33m${1}\e[0m"
+}
+
+## END DO-NOTHING FUNCTIONS
