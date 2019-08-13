@@ -1,0 +1,21 @@
+#!/usr/bin/awk -f
+
+# What have I learned?
+# That AWK code blocks are associated with patterns for a line.
+# If nothing is provided, it's equivalent to /.*/
+# BEGIN and END are special patterns for the starting and ending behavior.
+#  Useful for initializing variables and calculation.
+
+BEGIN {
+    sum = 0;
+    printf("Looking for errors now\n");
+}
+/timed out/ {
+    sum++;
+}
+/RTDSYS/ {
+    print("Some issue with RTDSYS");
+}
+END {
+    printf("Done. Found %i timeout errors\n", sum)
+}
