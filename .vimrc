@@ -1,13 +1,8 @@
-execute pathogen#infect()
-
-" set GUI stuff
-if has ('gui_running')
-    set guifont=Hack:h9:cANSI
-    autocmd GUIEnter * set vb t_vb=
-endif
-
 syntax on
 filetype plugin indent on
+
+" Specify shell used by `term` and `shell` commands (if *nix system, use e.g.: `/usr/bin/zsh`)
+set shell=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 
 " LaTeX stuff
 set shellslash
