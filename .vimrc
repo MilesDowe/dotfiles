@@ -1,9 +1,3 @@
-" set GUI stuff
-if has ('gui_running')
-    set guifont=Hack:h9:cANSI
-    autocmd GUIEnter * set vb t_vb=
-endif
-
 syntax on
 filetype plugin indent on
 
