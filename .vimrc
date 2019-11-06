@@ -1,15 +1,34 @@
+" set GUI stuff
+if has ('gui_running')
+    set guifont=Hack:h9:cANSI
+    autocmd GUIEnter * set vb t_vb=
+endif
+
 syntax on
 filetype plugin indent on
-
-" Specify shell used by `term` and `shell` commands (if *nix system, use e.g.: `/usr/bin/zsh`)
-set shell=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 
 " LaTeX stuff
 set shellslash
 let g:tex_flavor='latex'
 
-colorscheme zenburn " gruvbox neodark
+" Shell config (for term command)
+set shell="C:\Program Files\PowerShell\6\pwsh.exe"
+
+" ==================
+" Appearances
+" ==================
+colorscheme jellybeans "zenburn  gruvbox neodark
 set background=dark
+
+set lines=40
+set columns=120
+
+set guioptions-=m "remove menu bar
+set guioptions-=T "remove toolbar
+set guioptions-=r
+set guioptions-=L
+
+set colorcolumn=100
 
 " Stop the beeping
 set noeb vb t_vb=
@@ -27,6 +46,7 @@ set shiftwidth=4
 set expandtab
 set softtabstop=4
 set autoindent
+set nobackup
 set nuw=6
 set cursorline
 set hidden
@@ -38,20 +58,17 @@ set history=1000
 set undolevels=1000
 set noerrorbells
 
-set guioptions-=m "remove menu bar
-set guioptions-=T "remove toolbar
-set guioptions-=r
-set guioptions-=L
-
+" ==================
 " File backups
 "   from: begriffs.com/posts/2019-07-19-history-use-vim.html
     " Protect changes between writes. Default values of update
     " (200 keystrokes) and updatetime (4 seconds) are fine.
+" ==================
 set swapfile
 set directory^=~/vimfiles/swap//
     " protect against crash-during-write
 set writebackup
-    " but do not persist backup after successful write 
+    " but do not persist backup after successful write
 set nobackup
     " use rename-and-write-new method whenever safe
 set backupcopy=auto
@@ -63,12 +80,12 @@ end
     " persist the undo tree for each file
 set undofile
 set undodir^=~/vimfiles/undo//
-
-set colorcolumn=100
-
 set updatetime=100
 
-" Set button mapping and other functionality
+" ==================
+" Custom button mapping
+" ==================
+" Tabs
 nnoremap <C-pgup> :tabprevious<cr>
 nnoremap <C-pgdn> :tabnext<cr>
 nnoremap <C-t> :tabnew<cr>
@@ -76,6 +93,7 @@ inoremap <C-pgup> <ESC>:tabprevious<cr>i
 inoremap <C-pgdn> <ESC>:tabnext<cr>i
 inoremap <C-t> <ESC>:tabnew<cr>i
 
+" Switching modes
 nnoremap ; :
 nnoremap : <nop>
 
@@ -89,7 +107,7 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 " used for a "done.md" file when knocking off todo items.
 nnoremap <leader>tdd :put=strftime('## %a, %Y.%m.%d ##')<cr>
 
-" Change between windows
+" Change between windows (finicky, doesn't always work)
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -104,8 +122,12 @@ nnoremap <C-a> ggVG
 nnoremap <C-s> :w<cr>
 inoremap <C-s> <esc>:w<cr>
 
+
 " Begin Plugin Configs
-"-----------------
+"=================
+" VimFiler:
+nnoremap <C-o> :VimFilerExplorer<cr>
+
 " CtrlP: hotkey
 nnoremap <C-p> :CtrlP .<cr>
 
@@ -134,6 +156,9 @@ let g:ale_fixers = {
             \ '*': ['remove_trailing_lines', 'trim_whitespace'],
             \ 'go': ['gofmt', 'goimports']
 \}
+" ALE: kotlin config
+let g:ale_kotlin_kotlinc_classpath = "C:\Users\Miles\scoop\apps\kotlin\current\lib"
+let g:ale_kotlin_kotlinc_sourcepath = "C:\Users\Miles\scoop\apps\kotlin\current\bin"
 
 " UltiSnips: Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -149,8 +174,6 @@ let g:UltiSnipsSnippetsDirectories=["C:\Users\Miles\vimfiles"]
 
 " Prose, notetaking mode
 function! ProseTimeOn()
-    Goyo
-    "set background=light
     Limelight
     set filetype=markdown
     set guifont=courier\ new:h10
@@ -159,8 +182,6 @@ endfunction
 command! ProseOn call ProseTimeOn()
 
 function! ProseTimeOff()
-    Goyo!
-    "set background=dark
     Limelight!
     set guifont=hack:h10
     PencilOff
