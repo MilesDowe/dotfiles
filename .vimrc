@@ -134,7 +134,7 @@ map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 " GitGutter: config
-au VimEnter * :GitGutterDisable " Disable GitGutter
+let g:gitgutter_diff_args = '--ignore-cr-at-eol' " disable carriage-return changes
 
 " Airline: config
 set laststatus=2
