@@ -5,9 +5,6 @@ filetype plugin indent on
 set shellslash
 let g:tex_flavor='latex'
 
-" Shell config (for term command)
-set shell="C:\Program Files\PowerShell\6\pwsh.exe"
-
 " ==================
 " Appearances
 " ==================
