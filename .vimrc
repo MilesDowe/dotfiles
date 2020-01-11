@@ -5,11 +5,14 @@ filetype plugin indent on
 set shellslash
 let g:tex_flavor='latex'
 
+
 " ==================
 " Appearances
 " ==================
 colorscheme jellybeans "zenburn  gruvbox neodark
 set background=dark
+
+set guifont=hack:h9
 
 set lines=40
 set columns=120
@@ -73,6 +76,7 @@ set undofile
 set undodir^=~/vimfiles/undo//
 set updatetime=100
 
+
 " ==================
 " Custom button mapping
 " ==================
@@ -96,7 +100,7 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " I use this motion to add the current date as header-2. Primarily
 " used for a "done.md" file when knocking off todo items.
-nnoremap <leader>tdd :put=strftime('## %a, %Y.%m.%d ##')<cr>
+nnoremap <leader>d :put=strftime('## %a, %Y.%m.%d ##')<cr>
 
 " Change between windows (finicky, doesn't always work)
 nnoremap <C-h> <C-w>h
@@ -113,7 +117,11 @@ nnoremap <C-a> ggVG
 nnoremap <C-s> :w<cr>
 inoremap <C-s> <esc>:w<cr>
 
+" Terminal
+nnoremap <leader>t :term pwsh<cr>
 
+
+"=================
 " Begin Plugin Configs
 "=================
 " VimFiler:
@@ -131,6 +139,7 @@ map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 " GitGutter: config
+"au VimEnter * :GitGutterDisable " Disable GitGutter
 let g:gitgutter_diff_args = '--ignore-cr-at-eol' " disable carriage-return changes
 
 " Airline: config
@@ -160,9 +169,10 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Specify target directory so `scoop` is not used
 let g:UltiSnipsSnippetsDirectories=["C:\Users\Miles\vimfiles"]
-"-----------------
 
-
+"=================
+" Begin helpful functions
+"=================
 " Prose, notetaking mode
 function! ProseTimeOn()
     Limelight
@@ -198,7 +208,11 @@ function! CleanUpJson()
 endfunction
 command! JSONFormat call CleanUpJson()
 
-function! PowershellDefault()
-    edit term://powershell
-endfunction
-command! UseTerm call PowershellDefault()
+"=================
+" Begin file augroups
+"=================
+" Golang commands
+augroup golang
+    autocmd!
+    au BufReadPost,BufWritePre *.go :%!gofmt " Format the file upon read and write
+augroup END
