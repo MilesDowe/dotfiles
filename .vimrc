@@ -27,6 +27,8 @@ set colorcolumn=100
 " Stop the beeping
 set noeb vb t_vb=
 
+" Customize how built-in netrw directory viewer appears;
+" though, VimFiler is a real nice replacement
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 2
@@ -35,6 +37,7 @@ let g:netrw_winsize = 25
 
 set ic
 set number
+set relativenumber
 set tabstop=4
 set shiftwidth=4
 set expandtab
