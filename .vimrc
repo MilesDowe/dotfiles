@@ -105,24 +105,30 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 " used for a "done.md" file when knocking off todo items.
 nnoremap <leader>d :put=strftime('## %a, %Y.%m.%d ##')<cr>
 
-" Change between windows (finicky, doesn't always work)
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" Change between windows
+nnoremap <A-S-h> <C-w>h
+nnoremap <A-S-j> <C-w>j
+nnoremap <A-S-k> <C-w>k
+nnoremap <A-S-l> <C-w>l
+tnoremap <A-S-h> <C-w>h
+tnoremap <A-S-j> <C-w>j
+tnoremap <A-S-k> <C-w>k
+tnoremap <A-S-l> <C-w>l
 
 " Copy pasting
 vnoremap <C-c> "*y
 vnoremap <C-x> "*x
 nnoremap <C-a> ggVG
 
-" Saving (<C-s> is reserved in Linux shells)
-nnoremap <C-s> :w<cr>
-inoremap <C-s> <esc>:w<cr>
-
 " Terminal
 nnoremap <leader>t :term pwsh<cr>
 
+" Refresh source
+nnoremap <leader>r :source ~/.vimrc<cr>
+
+" ---- F-keys ----
+" Modify .vimrc
+nnoremap <F12> :e ~/.vimrc<cr>
 
 "=================
 " Begin Plugin Configs
@@ -217,5 +223,6 @@ command! JSONFormat call CleanUpJson()
 " Golang commands
 augroup golang
     autocmd!
-    au BufReadPost,BufWritePre *.go :%!gofmt " Format the file upon read and write
+     " Format the file upon read and write
+    au BufReadPost,BufWritePre *.go :%!gofmt
 augroup END
