@@ -102,7 +102,7 @@ inoremap <esc> <nop>
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " I use this motion to add the current date as header-2. Primarily
-" used for a "done.md" file when knocking off todo items.
+" used for a `done.md` file when knocking off todo items.
 nnoremap <leader>d :put=strftime('## %a, %Y.%m.%d ##')<cr>
 
 " Change between windows
@@ -119,6 +119,11 @@ tnoremap <A-S-l> <C-w>l
 vnoremap <C-c> "*y
 vnoremap <C-x> "*x
 nnoremap <C-a> ggVG
+
+" Tag navigation
+" <C-]> is go to a tag, so feel it makes sense to make <C-[> go back; unaware
+" of possible collisions
+nnoremap <C-[> :pop<cr>
 
 " Terminal
 nnoremap <leader>t :term pwsh<cr>
