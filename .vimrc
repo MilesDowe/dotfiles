@@ -8,6 +8,8 @@ let g:tex_flavor='latex'
 " ==================
 " Appearances
 " ==================
+colorscheme elflord
+
 set colorcolumn=100
 
 " Stop the beeping
