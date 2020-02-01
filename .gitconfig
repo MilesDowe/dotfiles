@@ -1,0 +1,14 @@
+[core]
+    editor = vim
+[user]
+	name = Miles Dowe
+	email = milesdowe@gmail.com
+	signingkey = C739CD7F26A45A07
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+	prompt = false
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/bin/gpg
