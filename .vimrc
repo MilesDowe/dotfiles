@@ -117,7 +117,7 @@ nnoremap <C-[> :pop<cr>
 nnoremap <leader>t :term pwsh<cr>
 
 " Refresh source
-nnoremap <leader>r :source ~/.vimrc<cr>
+nnoremap <leader>r :source ~/.vimrc<cr>:source ~/.gvimrc<cr>
 
 " ---- F-keys ----
 " Modify .vimrc
