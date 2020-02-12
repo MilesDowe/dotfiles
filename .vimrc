@@ -109,8 +109,8 @@ vnoremap <C-x> "*x
 nnoremap <C-a> ggVG
 
 " Tag navigation
-" <C-]> is go to a tag, so feel it makes sense to make <C-[> go back; unaware
-" of possible collisions
+" <C-]> is go to a tag, so feel it makes sense to make <C-[> go back
+" NOTE: causes funkiness in Unix (writes to command after opening)
 nnoremap <C-[> :pop<cr>
 
 " Terminal
@@ -158,6 +158,8 @@ let g:ale_fixers = {
             \ '*': ['remove_trailing_lines', 'trim_whitespace'],
             \ 'go': ['gofmt', 'goimports']
 \}
+" ALE: python config
+let g:ale_python_pylint_options = '--load-plugins 
 " ALE: kotlin config
 let g:ale_kotlin_kotlinc_classpath = "C:\Users\Miles\scoop\apps\kotlin\current\lib"
 let g:ale_kotlin_kotlinc_sourcepath = "C:\Users\Miles\scoop\apps\kotlin\current\bin"
@@ -171,6 +173,13 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Specify target directory so `scoop` is not used
 let g:UltiSnipsSnippetsDirectories=["C:\Users\Miles\vimfiles"]
+
+" vim-sandwich:
+let g:operator_sandwich_no_default_key_mappings = 1
+map <leader>sa <Plug>(operator-sandwich-add)
+map <leader>sd <Plug>(operator-sandwich-delete)
+map <leader>sr <Plug>(operator-sandwich-replace)
+
 
 "=================
 " Begin helpful functions
@@ -211,11 +220,16 @@ endfunction
 command! JSONFormat call CleanUpJson()
 
 "=================
-" Begin file augroups
+" Begin file autogroups
 "=================
-" Golang commands
+augroup java
+    autocmd!
+    autocmd BufRead *.java set noexpandtab " use tabs
+augroup END
+
 augroup golang
     autocmd!
-     " Format the file upon read and write
-    au BufReadPost,BufWritePre *.go :%!gofmt
+    autocmd BufRead *.go :set noexpandtab " use tabs
+    autocmd QuitPre *.go :%!gofmt         " run formatter after close
 augroup END
+
