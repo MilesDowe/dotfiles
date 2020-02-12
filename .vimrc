@@ -220,11 +220,16 @@ endfunction
 command! JSONFormat call CleanUpJson()
 
 "=================
-" Begin file augroups
+" Begin file autogroups
 "=================
-" Golang commands
+augroup java
+    autocmd!
+    autocmd BufRead *.java set noexpandtab " use tabs
+augroup END
+
 augroup golang
     autocmd!
-     " Format the file upon read and write
-    au BufReadPost,BufWritePre *.go :%!gofmt
+    autocmd BufRead *.go :set noexpandtab " use tabs
+    autocmd QuitPre *.go :%!gofmt         " run formatter after close
 augroup END
+
