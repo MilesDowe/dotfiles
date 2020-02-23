@@ -159,7 +159,7 @@ let g:ale_fixers = {
             \ 'go': ['gofmt', 'goimports']
 \}
 " ALE: python config
-let g:ale_python_pylint_options = '--load-plugins 
+let g:ale_python_pylint_options = '--load-plugins'
 " ALE: kotlin config
 let g:ale_kotlin_kotlinc_classpath = "C:\Users\Miles\scoop\apps\kotlin\current\lib"
 let g:ale_kotlin_kotlinc_sourcepath = "C:\Users\Miles\scoop\apps\kotlin\current\bin"
