@@ -26,10 +26,10 @@ let g:netrw_winsize = 25
 set ic
 set number
 set relativenumber
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set softtabstop=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=0
+set noexpandtab   " Use tabs (we specify otherwise for dependent languages)
 set autoindent
 set nobackup
 set nuw=6
@@ -222,14 +222,14 @@ command! JSONFormat call CleanUpJson()
 "=================
 " Begin file autogroups
 "=================
-augroup java
+augroup go
     autocmd!
-    autocmd BufRead *.java set noexpandtab " use tabs
+    autocmd QuitPre *.go :%!gofmt " run formatter after close
 augroup END
 
-augroup golang
-    autocmd!
-    autocmd BufRead *.go :set noexpandtab " use tabs
-    autocmd QuitPre *.go :%!gofmt         " run formatter after close
-augroup END
-
+augroup python
+    autocmd BufRead,BufNewFile *.py set expandtab " use spaces
+		autocmd BufRead,BufNewFile *.py set tabstop=4
+		autocmd BufRead,BufNewFile *.py set softtabstop=4
+		autocmd BufRead,BufNewFile *.py set shiftwidth=0
+augroup end
