@@ -31,7 +31,6 @@ set softtabstop=2
 set shiftwidth=0
 set noexpandtab   " Use tabs (we specify otherwise for dependent languages)
 set autoindent
-set nobackup
 set nuw=6
 set cursorline
 set hidden
@@ -208,14 +207,14 @@ endfunction
 " Create a commands for cleaning up XML & JSON (assumes Py3 installed)
 function! CleanUpXml()
     set syntax=xml
-    %!python -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
+    %!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
     g/^[\t ]*$/d
 endfunction
 command! XMLFormat call CleanUpXml()
 
 function! CleanUpJson()
     set syntax=json
-    %!python -m json.tool
+    %!python3 -m json.tool
 endfunction
 command! JSONFormat call CleanUpJson()
 
