@@ -1,0 +1,2 @@
+# Don't bother with some work-specific things
+.vim/plugin/work_stuff.vim
