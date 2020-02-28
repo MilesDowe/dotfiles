@@ -13,5 +13,12 @@ augroup pythonfiles
 augroup end
 
 augroup javascriptfiles
-    autocmd BufRead,BufNewFile *.js set expandtab " use spaces
+	autocmd!
+	autocmd BufRead,BufNewFile *.js set expandtab " use spaces
+augroup end
+
+augroup bashfiles
+	autocmd!
+	" Avoid using CRLF
+	autocmd BufRead,BufNewFile *.sh set fileformat=unix
 augroup end
