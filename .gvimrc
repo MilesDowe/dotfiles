@@ -12,3 +12,5 @@ set guioptions-=m "remove menu bar
 set guioptions-=T "remove toolbar
 set guioptions-=r
 set guioptions-=L
+
+set cursorline
