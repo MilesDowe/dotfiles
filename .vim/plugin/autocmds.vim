@@ -19,6 +19,11 @@ augroup javascriptfiles
 	autocmd BufRead,BufNewFile *.js set expandtab " use spaces
 augroup end
 
+augroup typescriptfiles
+	autocmd!
+	autocmd BufRead,BufNewFile *.ts set expandtab " use spaces
+augroup end
+
 augroup bashfiles
 	autocmd!
 	" Avoid using CRLF
