@@ -1,9 +1,9 @@
 set t_vb=
 
-colorscheme jellybeans "zenburn  gruvbox neodark
+colorscheme nord "jellybeans zenburn  gruvbox neodark
 set background=dark
 
-set guifont=hack:h9
+set guifont=Fira\ Code:h9
 
 set lines=40
 set columns=120

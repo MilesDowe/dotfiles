@@ -9,11 +9,12 @@ endfunction
 let g:lightline =  {
 \ 'colorscheme': 'one',
 \ 'active': {
-\   'left': [['mode', 'paste'], ['readonly', 'gitgut', 'filename', 'modified']],
+\   'left': [['mode', 'paste'], ['readonly', 'gitgut', 'filename', 'gitbranch', 'modified']],
 \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
 \ },
 \ 'component_function': {
-\   'gitgut': 'GitStatus'
+\   'gitgut': 'GitStatus',
+\   'gitbranch': 'gitbranch#name',
 \ },
 \ 'component': {
 \ 	'charhex': '0x%B',
