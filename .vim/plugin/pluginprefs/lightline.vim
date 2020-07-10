@@ -7,7 +7,7 @@ function! GitStatus()
 endfunction
 
 let g:lightline =  {
-\ 'colorscheme': 'one',
+\ 'colorscheme': 'challenger_deep',
 \ 'active': {
 \   'left': [['mode', 'paste'], ['readonly', 'gitgut', 'filename', 'gitbranch', 'modified']],
 \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]

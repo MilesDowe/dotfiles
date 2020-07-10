@@ -1,6 +1,6 @@
 set t_vb=
 
-colorscheme nord "jellybeans zenburn  gruvbox neodark
+colorscheme challenger_deep "gruvbox jellybeans zenburn neodark
 set background=dark
 
 set guifont=Fira\ Code:h9

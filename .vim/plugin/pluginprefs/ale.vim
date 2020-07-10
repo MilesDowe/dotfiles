@@ -3,8 +3,8 @@
 let g:ale_lint_on_text_changed = 'never'
 "let g:ale_linters = {'text': ['write-good','vale','textlint','proselint','languagetool','alex','redpen']}
 let g:ale_fixers = {
-            \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \ 'go': ['gofmt', 'goimports']
+	\ '*': ['remove_trailing_lines', 'trim_whitespace'],
+	\ 'go': ['gofmt', 'goimports']
 \}
 
 " python config
