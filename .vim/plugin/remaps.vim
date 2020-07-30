@@ -54,5 +54,11 @@ nnoremap <leader>r :source ~/.vimrc<cr>:source ~/.gvimrc<cr>
 " F-keys
 " ------------------------
 " Modify .vimrc
-nnoremap <F12> :e ~/.vimrc<cr>
+" nnoremap <F12> :e ~/.vimrc<cr> (Unused since refactoring)
 
+" ------------------------
+" Mergetool
+" ------------------------
+nnoremap theirs :diffg REMOTE<cr>
+":diffg BA  " get from BASE
+nnoremap mine :diffg LOCAL<cr>
