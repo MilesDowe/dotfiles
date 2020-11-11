@@ -45,7 +45,7 @@ nnoremap <C-a> ggVG
 nnoremap <C-[> :pop<cr>
 
 " Terminal
-nnoremap <leader>t :term<cr>
+nnoremap <leader>t :term ++close<cr>
 
 " Refresh source
 nnoremap <leader>r :source ~/.vimrc<cr>:source ~/.gvimrc<cr>

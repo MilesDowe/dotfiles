@@ -4,7 +4,7 @@ augroup gofiles
 	autocmd!
 	" run formatter before opening
 	autocmd BufRead *.go :%!gofmt
-	autocmd BufRead,BufNewFile *.go packadd coc.nvim
+	"autocmd BufRead,BufNewFile *.go packadd coc.nvim
 augroup end
 
 augroup pythonfiles
