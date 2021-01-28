@@ -45,10 +45,13 @@ nnoremap <C-a> ggVG
 nnoremap <C-[> :pop<cr>
 
 " Terminal
-nnoremap <leader>t :term ++close<cr>
+nnoremap <leader>t :term ++close pwsh<cr>
 
 " Refresh source
 nnoremap <leader>r :source ~/.vimrc<cr>:source ~/.gvimrc<cr>
+
+" Better terminal escaping
+tnoremap <ESC> <C-\><C-n>
 
 " ------------------------
 " F-keys
