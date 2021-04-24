@@ -42,7 +42,7 @@ nnoremap <C-a> ggVG
 " Tag navigation
 " <C-]> is go to a tag, so feel it makes sense to make <C-[> go back
 " NOTE: causes funkiness in Unix (writes to command after opening)
-nnoremap <C-[> :pop<cr>
+"nnoremap <C-[> :pop<cr>
 
 " Terminal
 nnoremap <leader>t :term ++close pwsh<cr>
