@@ -51,7 +51,10 @@ nnoremap <leader>t :term ++close pwsh<cr>
 nnoremap <leader>r :source ~/.vimrc<cr>:source ~/.gvimrc<cr>
 
 " Better terminal escaping
-tnoremap <ESC> <C-\><C-n>
+tnoremap <Esc> <C-W>N
+tnoremap <Esc><Esc> <C-W>N
+set timeout timeoutlen=1000
+set ttimeout ttimeoutlen=100
 
 " ------------------------
 " F-keys
